@@ -3,16 +3,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TypeDAO {
-
-    public final static int GEN1 = 15 ;
+    public final static int GEN1 = 15;
     private DatabaseManager dbm;
-    public TypeDAO(){
-        
-        dbm = new DatabaseManager();
 
-        try{
+    public TypeDAO() {
+        dbm = new DatabaseManager();
+        try {
             dbm.connect();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Erreur : " + e.getMessage());
         }
     }
@@ -23,8 +21,8 @@ public class TypeDAO {
         try {
 
             PreparedStatement requete = dbm.getConnection().prepareStatement(sql);
-            ResultSet donnee = requete.executeQuery() ;
-            int i = 0 ;
+            ResultSet donnee = requete.executeQuery();
+            int i = 0;
             while (donnee.next()) {
                 String libelle = donnee.getString("libelle");
                 tabType[i] = new Type(libelle);
@@ -39,22 +37,19 @@ public class TypeDAO {
 
     }
 
-
-    public double recupMulti(int fkAtt,int fkDef ,DatabaseManager dbm){
-        String sql = "SELECT multi from efficacite WHERE fkAtt = ? and fkDef= ? LIMIT 1;";
-        try{
-
-
-        PreparedStatement pstmt = dbm.getConnection().prepareStatement(sql);
-        pstmt.setInt(1,fkAtt);
-        pstmt.setInt(2,fkDef);
-        ResultSet multi = pstmt.executeQuery(sql);
-        
-        System.out.println(multi.getDouble("multi"));
-
-        }catch(SQLException e)  {
-            System.out.println("ERREUR DU CHARGEMENT DES TYPES : " + e.getErrorCode());
+    public double recupMulti(int fkAtt, int fkDef, DatabaseManager dbm) {
+        String sql = "SELECT multi FROM efficacite WHERE fkAtt = ? AND fkDef = ? LIMIT 1";
+        try {
+            PreparedStatement pstmt = dbm.getConnection().prepareStatement(sql);
+            pstmt.setInt(1, fkAtt);
+            pstmt.setInt(2, fkDef);
+            ResultSet multi = pstmt.executeQuery();
+            if (multi.next()) {
+                return multi.getDouble("multi");
+            }
+        } catch (SQLException e) {
+            System.out.println("ERREUR RECUP MULTI : " + e.getErrorCode());
         }
-        return 1 ;
+        return 1;
     }
 }
