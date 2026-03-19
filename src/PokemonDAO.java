@@ -19,7 +19,7 @@ public class PokemonDAO{
                 int attaque = donnees.getInt("attaque");
                 int defense = donnees.getInt("defense");
                 int vitesse = donnees.getInt("vitesse");
-                tousPokemon[i] = new Pokemon(nom, pv, pvMax, attaque, defense, vitesse);                
+                tousPokemon[i] = new Pokemon(nom, pv, pvMax, attaque, defense, vitesse, null);                
                 i++;           
             }
 
