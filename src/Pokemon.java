@@ -7,7 +7,7 @@ public class Pokemon {
     private int vitesse;
     private Type[] types;  
     private Attaque[] attaques; 
-    private Etat etat;
+    //private Etat etat;
 
    
 
@@ -22,10 +22,7 @@ public class Pokemon {
         
     }
 
-    public Attaque attaqueByIndex(int index) {
-        return this.attaques[index];
-    }
-
+    
     public int attaquer(Attaque attaque, Pokemon cible) {
         int degats = attaque.getPuissance() + this.attaque - cible.getDefense();
         if (degats < 0) {
@@ -38,64 +35,28 @@ public class Pokemon {
         return degats;
     }
 
+    public Attaque attaqueByIndex(int index) { return this.attaques[index];}
+    
+    public Type[] getTypes() {return types;}
+    public void setTypes(Type[] types) {this.types = types;}
 
+    public String getNom() {return nom;}
+    public void setNom(String nom) {this.nom = nom;}
 
-    public Type[] getTypes() {
-        return types;
-    }
+    public int getPv() {return pv;}
+    public void setPv(int pv) {this.pv = pv;}
 
+    public int getPvMax() {return pvMax;}
+    public void setPvMax(int pvMax) {this.pvMax = pvMax;}
 
-    public void setTypes(Type[] types) {
-        this.types = types;
-    }
+    public int getAttaque() {return attaque;}
+    public void setAttaque(int attaque) {this.attaque = attaque;}
 
-    public String getNom() {
-        return nom;
-    }
+    public int getDefense() {return defense;}
+    public void setDefense(int defense) {this.defense = defense;}
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public int getPv() {
-        return pv;
-    }
-
-    public void setPv(int pv) {
-        this.pv = pv;
-    }
-
-    public int getPvMax() {
-        return pvMax;
-    }
-
-    public void setPvMax(int pvMax) {
-        this.pvMax = pvMax;
-    }
-
-    public int getAttaque() {
-        return attaque;
-    }
-
-    public void setAttaque(int attaque) {
-        this.attaque = attaque;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
-    public int getVitesse() {
-        return vitesse;
-    }
-
-    public void setVitesse(int vitesse) {
-        this.vitesse = vitesse;
-    }
+    public int getVitesse() {return vitesse;}
+    public void setVitesse(int vitesse) {this.vitesse = vitesse;}
 
 }
 
