@@ -27,5 +27,9 @@ public class Main {
                 System.out.println("- " + a.getLibelle() + " | puissance : " + a.getPuissance() + " | type : " + a.getTypeId());
             }
         }
+
+        
+
+
     }
 }

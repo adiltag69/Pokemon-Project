@@ -5,7 +5,7 @@ public class Joueur{
     protected Pokemon pokemonActif;
     protected int pokemonKO;
 
-    public Joueur(String nom, Pokemon[] equipe, Pokemon pokemonActif) {
+    public Joueur(String nom, Pokemon[] equipe) {
         this.nom = nom;
         this.equipe = equipe;
         this.pokemonActif = equipe[0];

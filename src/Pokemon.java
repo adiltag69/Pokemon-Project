@@ -1,4 +1,5 @@
 public class Pokemon {
+    private int id;
     private String nom;
     private int pv; 
     private int pvMax; 
@@ -11,7 +12,8 @@ public class Pokemon {
 
    
 
-    public Pokemon(String nom, int pv, int pvMax, int attaque, int defense, int vitesse, Type[] types) {
+    public Pokemon(int id, String nom, int pv, int pvMax, int attaque, int defense, int vitesse, Type[] types) {
+        this.id = id;
         this.nom = nom;
         this.pv = pv;
         this.pvMax = pvMax;
