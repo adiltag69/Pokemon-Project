@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AttaqueDAO {
-    public final static int MAX_ATTAQUES = 200;
+    public final static int MAX_ATTAQUES = 4;
     private DatabaseManager dbm;
 
     public AttaqueDAO() {
@@ -32,6 +32,11 @@ public class AttaqueDAO {
         } catch (SQLException e) {
             System.out.println("ERREUR DU CHARGEMENT DES ATTAQUES : " + e.getErrorCode());
         }
+        try {
+            dbm.disconnect();
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la déconnexion ! Code Erreur : " + e.getErrorCode());
+        }
         return tabAttaque;
     }
 
@@ -55,6 +60,11 @@ public class AttaqueDAO {
             }
         } catch (SQLException e) {
             System.out.println("ERREUR ATTAQUES POKEMON : " + e.getErrorCode());
+        }
+        try {
+            dbm.disconnect();
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la déconnexion ! Code Erreur : " + e.getErrorCode());
         }
         return tabAttaque;
     }

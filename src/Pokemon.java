@@ -12,7 +12,7 @@ public class Pokemon {
 
    
 
-    public Pokemon(int id, String nom, int pv, int pvMax, int attaque, int defense, int vitesse, Type[] types) {
+    public Pokemon(int id, String nom, int pv, int pvMax, int attaque, int defense, int vitesse, Attaque[] attaques) {
         this.id = id;
         this.nom = nom;
         this.pv = pv;
@@ -20,7 +20,7 @@ public class Pokemon {
         this.attaque = attaque;
         this.defense = defense;
         this.vitesse = vitesse;
-        this.types = types;
+        this.attaques = attaques;
         
     }
 
