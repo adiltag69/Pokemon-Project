@@ -24,9 +24,19 @@ public class Joueur{
     public int getPokemonKO() {return pokemonKO;}
     public void setPokemonKO(int pokemonKO) {this.pokemonKO = pokemonKO;}
     
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Joueur: ").append(nom).append("\n");
+        sb.append("Equipe:\n");
+        for (Pokemon p : equipe) {
+            sb.append("- ").append(p.getNom()).append(" (PV: ").append(p.getPv()).append(")\n");
+        }
+        return sb.toString();
+    }
+
+}    
 
 
 
 
     
-}

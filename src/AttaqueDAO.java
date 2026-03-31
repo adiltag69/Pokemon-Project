@@ -18,8 +18,8 @@ public class AttaqueDAO {
     public Attaque[] chargeAttaque(DatabaseManager dbm) {
         String sql = "SELECT * FROM attaques";
         Attaque[] tabAttaque = new Attaque[MAX_ATTAQUES];
-        try {
-            PreparedStatement requete = dbm.getConnection().prepareStatement(sql);
+        /*try {
+             PreparedStatement requete = dbm.getConnection().prepareStatement(sql);
             ResultSet donnee = requete.executeQuery();
             int i = 0;
             while (donnee.next() && i < MAX_ATTAQUES) {
@@ -27,11 +27,11 @@ public class AttaqueDAO {
                 int puissance   = donnee.getInt("puissance");
                 int typeId      = donnee.getInt("type_id");
                 tabAttaque[i]   = new Attaque(libelle, puissance, typeId);
-                i++;
+                i++; 
             }
         } catch (SQLException e) {
             System.out.println("ERREUR DU CHARGEMENT DES ATTAQUES : " + e.getErrorCode());
-        }
+        }*/
         try {
             dbm.disconnect();
         } catch (SQLException e) {
@@ -49,7 +49,7 @@ public class AttaqueDAO {
         try {
             PreparedStatement pstmt = dbm.getConnection().prepareStatement(sql);
             pstmt.setInt(1, fkPokemon);
-            ResultSet donnee = pstmt.executeQuery();
+            ResultSet donnee = pstmt.executeQuery(); 
             int i = 0;
             while (donnee.next() && i < MAX_ATTAQUES) {
                 String libelle  = donnee.getString("libelle");

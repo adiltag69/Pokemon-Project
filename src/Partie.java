@@ -10,6 +10,7 @@ public class Partie{
     private String nomJ;
     Pokemon[] equipeJ;
     Random rand = new Random();
+    AttaqueDAO aDAO = new AttaqueDAO();
 
     
     public void debutPartie(DatabaseManager dbm){
@@ -24,23 +25,36 @@ public class Partie{
             choix = nbJoueur.nextInt();
             if (choix == 1){
                 System.out.println("Vous avez choisi de jouer contre l'IA");
-                
+
+
+                //creation de l'IA
                 nomJ = "Professeur Axeman";
                 equipeJ = new Pokemon[NB_POKEMON_PAR_EQUIPE];
                 for (int i = 0; i < equipeJ.length; i++) {
                     int idPokeIA = rand.nextInt(151) + 1;
-                    Attaque[] attaquesPokeIA = new AttaqueDAO().recupAttaquesPokemon(idPokeIA, dbm);
+                    Attaque[] attaquesPokeIA = aDAO.recupAttaquesPokemon(idPokeIA, dbm);
                     PokemonDAO pokeDAO = new PokemonDAO();
                     equipeJ[i] = pokeDAO.chargerParId(idPokeIA, attaquesPokeIA);
                 }
                 JoueurIA joueurIA = new JoueurIA(nomJ, equipeJ);
-                System.out.println("Voici votre adversaire :"+ joueurIA);
+                System.out.println("Voici votre adversaire :"+ joueurIA.toString());
 
+                //creation du joueur humain
                 joueur1 = creationJH(dbm);
                  
 
             } else if (choix == 2){
             System.out.println("Vous avez choisi de jouer contre un autre joueur");
+                //creation du joueur 1
+                System.out.println("Création du Joueur 1 : ");
+                joueur1 = creationJH(dbm);
+
+                //creation du joueur 2
+                System.out.println("Création du Joueur 2 : ");
+                joueur2 = creationJH(dbm);
+
+                System.out.println("Ce combat opposera " + joueur1.getNom() + " à " + joueur2.getNom());
+                System.out.println("Voici vos equipes : "+ joueur1.toString() + "\n" + joueur2.toString());
         
             }
             
@@ -53,10 +67,9 @@ public class Partie{
         Scanner scJ1 = new Scanner(System.in);
         System.out.println("Entrez votre nom : ");
         nomJ = scJ1.nextLine();
-        scJ1.close();
         equipeJ = choisirPokemonJH(dbm);
         JoueurHumain joueur = new JoueurHumain(nomJ, equipeJ);
-        System.out.println("Salut "+ joueur.getNom()+", voici votre équipe : "+ equipeJ);
+        System.out.println("Voici votre dresseur : "+ joueur.toString());
         try {
             dbm.disconnect();
         } catch (SQLException e) {
@@ -76,15 +89,14 @@ public class Partie{
         PokemonDAO pokeDAO = new PokemonDAO();
         pokeDAO.chargerTous();
 
+        int idPokeJ1;
         equipeJ = new Pokemon[NB_POKEMON_PAR_EQUIPE];
         for (int i = 0; i < equipeJ.length; i++) {
-            System.out.println("Entrez le numéro de votre Pokémon n°" + (i+1) + " : ");
-            int idPokeJ1 = scJ.nextInt();
-            if (idPokeJ1 < 1 || idPokeJ1 > PokemonDAO.GEN1) {
-                System.out.println("Numéro de Pokémon invalide, veuillez réessayer.");
-                i--; 
-                continue;
-            }
+            do{
+                
+                System.out.println("Entrez le numéro de votre Pokémon n°" + (i+1) + " : ");
+                idPokeJ1 = scJ.nextInt();
+            }while(idPokeJ1 < 1 || idPokeJ1 > PokemonDAO.GEN1);
             Attaque[] attaquesPokeJ1 = new AttaqueDAO().recupAttaquesPokemon(idPokeJ1, dbm);
             equipeJ[i] = pokeDAO.chargerParId(idPokeJ1, attaquesPokeJ1);
             scJ.nextLine();

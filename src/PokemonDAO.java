@@ -18,13 +18,14 @@ public class PokemonDAO{
             PreparedStatement requete = dbm.getConnection().prepareStatement(sql);
             ResultSet donnees = requete.executeQuery();
             while (donnees.next()) {
+                int id = donnees.getInt("id");
                 String nom = donnees.getString("nom");
                 int pv = donnees.getInt("pv");
                 int pvMax = donnees.getInt("pvMax");
                 int attaque = donnees.getInt("attaque");
                 int defense = donnees.getInt("defense");
                 int vitesse = donnees.getInt("vitesse");
-                System.out.println("nom : " + nom + " | pv : " + pv + " | pvMax : " + pvMax + " | attaque : " + attaque + " | defense : " + defense + " | vitesse : " + vitesse);
+                System.out.println(" id : "+ id  + " | nom : " + nom + " | pv : " + pv + " | pvMax : " + pvMax + " | attaque : " + attaque + " | defense : " + defense + " | vitesse : " + vitesse);
             }    
 
         } catch (SQLException e) {
