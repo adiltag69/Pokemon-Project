@@ -32,7 +32,7 @@ public class Partie{
                 equipeJ = new Pokemon[NB_POKEMON_PAR_EQUIPE];
                 for (int i = 0; i < equipeJ.length; i++) {
                     int idPokeIA = rand.nextInt(151) + 1;
-                    Attaque[] attaquesPokeIA = aDAO.recupAttaquesPokemon(idPokeIA, dbm);
+                    Attaque[] attaquesPokeIA = aDAO.recupAttaquesPokemon(idPokeIA);
                     PokemonDAO pokeDAO = new PokemonDAO();
                     equipeJ[i] = pokeDAO.chargerParId(idPokeIA, attaquesPokeIA);
                 }
@@ -97,7 +97,7 @@ public class Partie{
                 System.out.println("Entrez le numéro de votre Pokémon n°" + (i+1) + " : ");
                 idPokeJ1 = scJ.nextInt();
             }while(idPokeJ1 < 1 || idPokeJ1 > PokemonDAO.GEN1);
-            Attaque[] attaquesPokeJ1 = new AttaqueDAO().recupAttaquesPokemon(idPokeJ1, dbm);
+            Attaque[] attaquesPokeJ1 = new AttaqueDAO().recupAttaquesPokemon(idPokeJ1);
             equipeJ[i] = pokeDAO.chargerParId(idPokeJ1, attaquesPokeJ1);
             scJ.nextLine();
         }
