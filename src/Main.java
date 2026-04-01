@@ -20,7 +20,7 @@ public class Main {
 
         // ── Test attaqueDAO ───────────────────────────────────
         AttaqueDAO AttaqueDAO = new AttaqueDAO();
-        Attaque[] Attaques = AttaqueDAO.chargeAttaque(dbm);
+        Attaque[] Attaques = AttaqueDAO.chargeAttaque(dbm);dd
         System.out.println("\n=== Attaques ===");
         for (Attaque a : Attaques) {
             if (a != null) {
