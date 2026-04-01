@@ -5,12 +5,8 @@ public class JoueurHumain extends Joueur {
     private boolean badges;
     
     
-    public JoueurHumain(Pokemon[] equipe,String nom, int nbBadges, int nbVictoires, boolean badges) {
-        super(nom,equipe, equipe[0]);
-        this.nbBadges = nbBadges;
-        this.nbVictoires = nbVictoires;
-        this.badges = badges;
-        ;
+    public JoueurHumain(String nom,Pokemon[] equipe) {
+        super(nom,equipe);        
     }
 
 

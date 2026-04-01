@@ -1,31 +1,37 @@
-import java.sql.SQLException;
+
 
 public class Main {
     public static void main(String[] args) {
 
         DatabaseManager dbm = new DatabaseManager();
-        try {
-            dbm.connect();
-        } catch (SQLException e) {
-            System.out.println("Erreur : " + e.getMessage());
-        }
+        /*Partie partie = new Partie();
+        
+        partie.debutPartie(dbm);*/
 
-        // ── Test TypeDAO ──────────────────────────────────────
-        TypeDAO td = new TypeDAO();
-        Type[] tabTypes;
-        tabTypes = td.chargeType(dbm);
-        for (int i = 0; i < 15; i++) {
-            System.out.println(i + 1 + " : " + tabTypes[i].getNom());
-        }
+        //Test methode AttaqueDAO
+        AttaqueDAO aDAO = new AttaqueDAO();
+        int i=0;
+        Attaque[] tabAttaque = aDAO.chargeAttaque();
+            for (Attaque attaque : tabAttaque) {
 
-        // ── Test attaqueDAO ───────────────────────────────────
-        AttaqueDAO AttaqueDAO = new AttaqueDAO();
-        Attaque[] Attaques = AttaqueDAO.chargeAttaque(dbm);dd
-        System.out.println("\n=== Attaques ===");
-        for (Attaque a : Attaques) {
-            if (a != null) {
-                System.out.println("- " + a.getLibelle() + " | puissance : " + a.getPuissance() + " | type : " + a.getTypeId());
+                System.err.println(i);
+                i++;
+                if (attaque != null) {
+                    System.out.println(attaque);
+                }
+            }
+    
+            //Test methode recupAttaquesPokemon
+        int idPoke = 1; // Remplacez par l'ID du Pokémon que vous souhaitez tester
+        Attaque[] attaquesPoke = aDAO.recupAttaquesPokemon(idPoke);
+        System.out.println("Attaques du Pokémon avec ID " + idPoke + " :");
+        for (Attaque attaque : attaquesPoke) {
+            if (attaque != null) {
+                System.out.println(attaque);
             }
         }
+
+
+
     }
 }

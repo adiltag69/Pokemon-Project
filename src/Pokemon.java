@@ -1,4 +1,5 @@
 public class Pokemon {
+    private int id;
     private String nom;
     private int pv; 
     private int pvMax; 
@@ -11,15 +12,15 @@ public class Pokemon {
 
    
 
-    public Pokemon(String nom, int pv, int pvMax, int attaque, int defense, int vitesse, Type[] types) {
+    public Pokemon(int id, String nom, int pv, int pvMax, int attaque, int defense, int vitesse, Attaque[] attaques) {
+        this.id = id;
         this.nom = nom;
         this.pv = pv;
         this.pvMax = pvMax;
         this.attaque = attaque;
         this.defense = defense;
         this.vitesse = vitesse;
-        this.types = types;
-        this.etat = new Etat();
+        this.attaques = attaques;
         
     }
 
@@ -42,22 +43,19 @@ public class Pokemon {
     public void setTypes(Type[] types) {this.types = types;}
 
     public String getNom() {return nom;}
-    public void setNom(String nom) {this.nom = nom;}
+    
 
     public int getPv() {return pv;}
     public void setPv(int pv) {this.pv = pv;}
 
-    public int getPvMax() {return pvMax;}
-    public void setPvMax(int pvMax) {this.pvMax = pvMax;}
-
+    public int getPvMax() {return pvMax;}    
     public int getAttaque() {return attaque;}
-    public void setAttaque(int attaque) {this.attaque = attaque;}
-
     public int getDefense() {return defense;}
-    public void setDefense(int defense) {this.defense = defense;}
-
     public int getVitesse() {return vitesse;}
-    public void setVitesse(int vitesse) {this.vitesse = vitesse;}
+    public int getId() {return id;}
+    
+
+    
 
 }
 
