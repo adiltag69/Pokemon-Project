@@ -1,13 +1,13 @@
 public class Pokemon {
-    private int id;
-    private String nom;
+    private final int id;
+    private final String nom;
     private int pv; 
-    private int pvMax; 
-    private int attaque; 
-    private int defense; 
-    private int vitesse;
+    private final int pvMax; 
+    private final int attaque; 
+    private final int defense; 
+    private final int vitesse;
     private Type[] types;  
-    private Attaque[] attaques; 
+    private final Attaque[] attaques; 
     private Etat etat;
 
    
@@ -38,6 +38,10 @@ public class Pokemon {
     }
 
     public Attaque attaqueByIndex(int index) { return this.attaques[index];}
+    public String getAttaques() {
+        String a = attaques[0].toString() + attaques[1].toString() + attaques[2].toString() + attaques[3].toString();
+        return a;
+    }
     
     public Type[] getTypes() {return types;}
     public void setTypes(Type[] types) {this.types = types;}
@@ -53,7 +57,7 @@ public class Pokemon {
     public int getDefense() {return defense;}
     public int getVitesse() {return vitesse;}
     public int getId() {return id;}
-    
+    public Etat getEtat() {return etat;}
 
     
 

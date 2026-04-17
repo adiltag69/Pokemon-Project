@@ -3,21 +3,18 @@
 public class Main {
     public static void main(String[] args) {
 
-        DatabaseManager dbm = new DatabaseManager();
-        /*Partie partie = new Partie();
+        DatabaseManager dbm = new DatabaseManager();    
+        Partie partie = new Partie();
         
-        partie.debutPartie(dbm);*/
+        Joueur[] joueurs = partie.debutPartie(dbm);
+        partie.combat(joueurs);
 
-        //Test methode AttaqueDAO
+        /* //Test methode AttaqueDAO
         AttaqueDAO aDAO = new AttaqueDAO();
-        int i=0;
         Attaque[] tabAttaque = aDAO.chargeAttaque();
-            for (Attaque attaque : tabAttaque) {
-
-                System.err.println(i);
-                i++;
+            for (Attaque attaque : tabAttaque) {               
                 if (attaque != null) {
-                    System.out.println(attaque);
+                    System.out.println(attaque.toString());
                 }
             }
     
@@ -27,10 +24,10 @@ public class Main {
         System.out.println("Attaques du Pokémon avec ID " + idPoke + " :");
         for (Attaque attaque : attaquesPoke) {
             if (attaque != null) {
-                System.out.println(attaque);
+                System.out.println(attaque.toString());
             }
         }
-
+ */
 
 
     }

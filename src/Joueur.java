@@ -17,21 +17,29 @@ public class Joueur{
     public static int getTailleEquipe() { return TAILLE_EQUIPE;}
 
     public String getNom() { return nom; }
-    public void setNom(String nom) {this.nom = nom;}
 
     public Pokemon[] getEquipe() {return equipe;}
 
     public int getPokemonKO() {return pokemonKO;}
     public void setPokemonKO(int pokemonKO) {this.pokemonKO = pokemonKO;}
     
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Joueur: ").append(nom).append("\n");
-        sb.append("Equipe:\n");
+    public void afficherJoueur() {
+        System.out.println("Joueur: " + nom);
+        pause(1000);
+        System.out.println("Equipe:");
         for (Pokemon p : equipe) {
-            sb.append("- ").append(p.getNom()).append(" (PV: ").append(p.getPv()).append(")\n");
+            System.out.println("- " + p.getNom());
+            System.out.println(" PV: " + p.getPv() + " " + p.getAttaques());
+            pause(500);
         }
-        return sb.toString();
+    }   
+
+    public static void pause(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
 }    

@@ -26,6 +26,7 @@ public class PokemonDAO{
                 int defense = donnees.getInt("defense");
                 int vitesse = donnees.getInt("vitesse");
                 System.out.println(" id : "+ id  + " | nom : " + nom + " | pv : " + pv + " | pvMax : " + pvMax + " | attaque : " + attaque + " | defense : " + defense + " | vitesse : " + vitesse);
+                pause(50);
             }    
 
         } catch (SQLException e) {
@@ -36,7 +37,6 @@ public class PokemonDAO{
         } catch (SQLException e) {
             System.out.println("Erreur lors de la déconnexion ! Code Erreur : " + e.getErrorCode());
         }
-        return;
     }
 
     public Pokemon chargerParId(int id, Attaque[] tabAttaque){
@@ -72,5 +72,13 @@ public class PokemonDAO{
             System.out.println("Erreur lors de la déconnexion ! Code Erreur : " + e.getErrorCode());
         }
         return pokemon;
+    }
+
+    public static void pause(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     } 
 }

@@ -57,11 +57,6 @@ public class AttaqueDAO {
         } catch (SQLException e) {
             System.out.println("ERREUR ATTAQUES"+ e.getSQLState()+" POKEMON : " + e.getErrorCode());
         }
-        try {
-            dbm.disconnect();
-        } catch (SQLException e) {
-            System.out.println("Erreur lors de la déconnexion ! Code Erreur : " + e.getErrorCode());
-        }
         return tabAttaque;
     }
 }
