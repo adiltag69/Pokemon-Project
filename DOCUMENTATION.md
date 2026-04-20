@@ -1,6 +1,7 @@
 # Documentation — Pokémon Combat (Java)
 
-Documentation complète de toutes les classes et méthodes du projet.
+Documentation complète de toutes les classes et méthodes du projet.  
+
 ⚠️⚠️Toute les Méthodes ne sont pas implementer au jeu mais nous vous partageons notre vision de celle-ci ⚠️⚠️
 
 ---
